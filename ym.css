@@ -1,0 +1,821 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.main {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+}
+
+
+
+/* SIDEBAR */
+.sidebar {
+    width: 240px;
+    /* border-right: 1px solid #292929; */
+}
+
+/* SIDEBAR HEADING */
+.sidebarHeading {
+    /* width: 15rem; */
+    height: 4rem;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgb(68, 68, 68);
+}
+
+.bars {
+    width: 2rem;
+    height: 2rem;
+    margin: 0px 8px 0px 0px;
+    padding-left: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.bars i{
+position: relative;
+right: 0.3rem;;
+}
+
+.bars:hover {
+    background-color: #1D1D1D;
+    border: 1px solid 1D1D1D;
+}
+
+.sidebarHeading i {
+    font-size: 1.5rem;
+    /* margin: 8px; */
+    opacity: 0.7;
+}
+
+.sidebarHeading img {
+    /* margin-left: 0.5rem; */
+    width: 4.5rem;
+    height: 39%;
+}
+
+.sidebarHeading img {
+    cursor: pointer;
+}
+
+
+
+
+
+/* MAIN SIDEBAR */
+.sidebarMain {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgb(68, 68, 68);
+    transition: border-bottom 0.1s ease, border-right 0.1s ease;
+}
+
+/* SIDEBAR OPTIONS */
+.sidebarOptions {
+    display: flex;
+    flex-direction: column;
+    height: 14.5rem;
+    padding: 8px 0px;
+    margin: 0px 8px;
+
+}
+
+.option {
+    height: 48px;
+    display: flex;
+    padding: 0px 20px;
+    align-items: center;
+}
+
+.option i {
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.option a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+}
+
+.option:hover {
+    border-radius: 8px;
+    background-color: rgb(53, 53, 53);
+}
+
+.option:hover i {
+    opacity: 1;
+}
+
+.active {
+    border-radius: 8px;
+    background-color: rgb(29, 29, 29);
+}
+
+.active i {
+    opacity: 1;
+}
+
+hr {
+    margin-top: 1.5rem;
+    width: 80%;
+    margin-left: 1rem;
+    opacity: 0.2;
+}
+
+
+/* SIDEBAR PLAYLIST */
+.sidebarPlaylist {
+    margin: 0px 4px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+/* BADGE */
+.badge {
+    height: 2.25rem;
+    width: 12.5rem;
+    border-radius: 1.5rem;
+    background-color: rgb(29, 29, 29);
+    color: white;
+    border-width: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    flex-shrink: 0;
+    position: sticky;
+}
+
+.badge i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.badge p {
+    font-size: 0.88rem;
+    font-weight: 150;
+}
+
+
+
+/* PLAYLIST */
+.playlist {
+    width: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.playlistOptions {
+    padding: 4px 16px;
+    height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playlistOptions .visible h3 {
+    font-size: 0.875rem;
+    margin-bottom: 0.188rem;
+}
+
+.playlistOptions .visible p {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.playlistOptions .visible p i {
+    font-size: 0.7rem;
+}
+
+.playlistOptions .hide i {
+    font-size: 1.5rem;
+    opacity: 0;
+}
+
+.playlistOptions:hover {
+    background-color: rgb(53, 53, 53);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.playlistOptions:hover .hide i {
+    opacity: 1;
+}
+
+
+/* PLAYLIST SCROLL */
+.playlist::-webkit-scrollbar {
+    width: 8px;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+    transition: background-color 1s ease;
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+.playlist:hover::-webkit-scrollbar-thumb {
+    background-color: #606060;
+}
+
+
+
+/* MAIN */
+.mainContent {
+    flex: 1;
+    overflow: auto;
+    background:
+        radial-gradient(circle at 15% 2%,
+            /* Origin for the effect within this div */
+            rgb(137, 86, 101, 0.8) 0%,
+            #11313E 10%,
+            #252028 20%,
+            /* Crucial: Fade to full transparency by this point */
+            rgba(0, 0, 0, 0.1) 35%,
+            rgba(0, 0, 0, 0) 45%),
+        #000000;
+    transition: background 1s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+/* MAIN NAV -> SEARCH BOX AND ICONS*/
+nav {
+    /* width:100vw; */
+    position: sticky;
+    top: 0px;
+    height: 3rem;
+    z-index: 10;
+    background-color: transparent;
+    transition: background-color 0.1s ease, border-bottom 0.1s ease;
+    padding: 8px 100px 8px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.searchBox {
+    width: 29.9rem;
+    height: 2.6rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    border: 1px solid #5E666D;
+    display: flex;
+    align-items: center;
+
+}
+
+.searchButton {
+    height: 100%;
+}
+
+.searchBox input {
+    height: 90%;
+}
+
+.searchButton {
+    width: 2rem;
+    color: white;
+    opacity: .5;
+    background-color: transparent;
+    border: 0;
+    margin: 4px 12px;
+    font-size: 1.2rem;
+}
+
+.searchBox input {
+    background-color: transparent;
+    border: 0px;
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.searchBox input::placeholder {
+    color: white;
+    opacity: 0.5
+}
+
+.navOptions {
+    display: flex;
+    width: 5.125rem;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.75rem;
+}
+
+.user {
+    height: 1.625rem;
+    width: 1.625rem;
+    border-radius: 50%;
+    background-color: #78909C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.user:hover {
+    cursor: pointer;
+}
+
+
+/* GENRE PART */
+.genreWrapper {
+    height: 6.95rem;
+    padding: 0px 100px;
+}
+
+.genre {
+    display: flex;
+    overflow: auto;
+}
+
+.extraBox {
+    align-items: center;
+    display: flex;
+    padding: 40px 0px 8px;
+    margin: 6px;
+}
+
+.cornerLeft {
+    margin-left: 0px;
+}
+
+.cornerRight {
+    margin-right: 0px;
+}
+
+.emotion {
+    width: fit-content;
+    height: 2.25rem;
+    align-items: center;
+    display: flex;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.emotion:hover {
+    background-color: rgb(255, 255, 255, 0.3);
+}
+
+.emotion a {
+    font-size: 0.875rem;
+    margin: 0px 12px;
+    color: white;
+    text-decoration: none;
+}
+
+/* GENRE SCROLL */
+.genre::-webkit-scrollbar {
+    height: 8px;
+}
+
+.genre::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    transition: background-color 1s ease;
+    border-radius: 8px;
+}
+
+.genre:hover::-webkit-scrollbar-thumb {
+    background-color: #606060;
+
+}
+
+.genre::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa;
+}
+
+
+
+.part {
+    margin: 0px 100px;
+    padding-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    height: 2.25rem;
+}
+
+.head p {
+    width: 50%;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.icons {
+    width: 8%;
+    display: flex;
+    justify-content: space-between;
+}
+.icons.btn{
+    width: 17%;
+}
+.extraBtn{
+    margin-right:0.25rem;
+    width:4.686rem;
+    height:2.15rem;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.279);
+    color: white;
+    background-color: transparent;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+.extraBtn:hover {
+    background-color: rgb(255, 255, 255, 0.25);
+    border:none;
+}
+
+.icons div {
+    /* width: 36px; */
+    padding: 8px;
+    border-radius: 50%;
+    border: 1px solid white
+}
+.iconBodyleft,.iconBodyright{
+    transition: all 0.5s ease;
+}
+.iconBodyright:hover {
+    background-color: #343333;
+}
+
+.iconBodyleft:hover {
+    background-color: #4a4848;
+}
+
+/* CARD CONTAINER */
+.cardContainer {
+    overflow: auto;
+    height: 13.457rem;
+    /* background-color: pink;   */
+    margin-top: 0.75rem;
+    display: flex;
+    /* justify-content: spa; */
+    /* flex-wrap: wrap; */
+    gap: 1.5rem;
+}
+
+/* CIRCLE */
+.cardC {
+    height: 12.507rem;
+    /* background-color: greenyellow; */
+    width: 9.219rem;
+}
+
+.cardC img {
+    height: 9.219rem;
+    width: 9.219rem;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.cardInfo {
+    margin-top: 8px;
+    text-align: center;
+}
+
+.cardInfo p {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.artistName:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+
+
+/* SQUARE */
+.card {
+    height: 12.507rem;
+    width: 9.219rem;
+}
+
+.backGround {
+    width: 9.219rem;
+    height: 9.219rem;
+    background-size: cover;
+    display: flex;
+    padding: 0px 0px 5px 3px;
+    cursor: pointer;
+}
+
+/* Square Icon */
+/* this is for play button */
+.icon_background {
+    display: flex;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: #000;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0.9;
+    margin-top: 4.5rem;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.user_background {
+    width: 1.468rem;
+    height: 1.468rem;
+    border-radius: 50%;
+    background-color: gray;
+    border: 1px solid white;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: end;
+}
+
+.iconDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backGround {
+    display: flex;
+    justify-content: space-between;
+    background-size: contain;
+}
+
+.backGround:hover .icon_background {
+    opacity: 0.8;
+    background-color: #000;
+}
+
+.icon_background:hover {
+    transform: scale(1.2);
+
+}
+
+/* This is for 3 dots */
+.background_playIcon {
+    margin-bottom: 6.5rem;
+    margin-right: 0.4rem;
+    opacity: 0;
+
+}
+
+.backGround:hover .background_playIcon {
+    opacity: 1;
+}
+
+
+
+/* BOLLYWOOD */
+.cardContainer.Bollywood .card {
+    width: 16.391rem;
+    flex-shrink: 0;
+}
+
+.cardContainer.Bollywood .backGround {
+    padding: 0;
+    width: 100%;
+    background-size: cover;
+    display: block;
+    cursor: pointer;
+}
+
+.cardContainer.Bollywood .shadow {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: end;
+    gap: 4.75rem;
+    font-size: 3rem;
+    display: flex;
+    transition: background-color 0.3s ease;
+}
+
+.icon_background_bolly {
+    align-self: center;
+    text-align: right;
+    transition: font-size 0.3s ease;
+}
+
+.background_playIcon_bolly {
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-right: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cardContainer.Bollywood .backGround:hover .background_playIcon_bolly {
+    opacity: 1;
+}
+.cardContainer.Bollywood .backGround:hover .shadow {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.cardContainer.Bollywood {
+    display: flex;
+    height: 14rem;
+}
+
+.cardContainer.Bollywood .cardInfo {
+    text-align: left;
+}
+
+
+
+
+/* LISTEN AGAIN */
+.cardContainer.square .backGround {
+    padding: 0;
+    /* width: 100%; */
+    /* background-size: contain; */
+    display: block;
+    cursor: pointer;
+}
+.cardContainer.square .shadow{
+    /* background-color: red; */
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: end;
+    gap:1.5rem;
+    font-size: 3rem;
+    display: flex;
+    transition: background-color 0.3s ease;
+}
+.cardContainer.square .card:hover .shadow{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.cardContainer.square .backGround:hover .background_playIcon_bolly {
+    opacity: 1;
+}
+.cardContainer.square .cardInfo{
+    text-align: left;
+}
+
+.cardContainer.square{
+    /* overflow-y: hidden; */
+}
+
+/* Quick Picks */
+.cardContainer.qc {
+    height: 15.95rem;
+    overflow-y: hidden;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 0;
+    flex-wrap: wrap;
+    gap: 1rem 1.05rem;
+}
+
+.childCard {
+    width: 21.25rem;
+    display: flex;
+    padding: 0px 0.75rem 0rem 0.5rem;
+    align-items: center;
+    /* gap:0.5rem; */
+}
+
+.pic {
+    width: 3rem;
+    height: 3rem;
+    background-size: contain;
+
+}
+
+.play {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.10rem;
+}
+
+.childCard:hover .play {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    transition: opacity 0.1s ease
+}
+
+.pic i {
+    cursor: pointer;
+}
+
+.detail {
+    width: 55%;
+    margin-left: 0.75rem;
+    font-size: 0.875rem;
+    text-overflow: ellipsis;
+}
+.songName{
+    font-weight: 600;
+}
+.childIcons {
+    width: 7rem;
+    height: 100%;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    font-size: 1.25rem;
+    z-index: 10;
+    transition: opacity 0.1s ease;
+    color:rgb(182, 181, 181);
+}
+
+.childCard .play,
+.childCard .childIcons {
+    opacity: 0;
+}
+
+.childCard:hover .play,
+.childCard:hover .childIcons {
+    opacity: 1;
+}
+.songInfo:hover{
+    text-decoration: underline;
+}
+
+
+
+/* REWIND AND RECHARGE */
+.cardContainer.rewind .user_background{
+    opacity: 0;
+}
+
+
+/* CARD CONTAINER SCROLL */
+.cardContainer::-webkit-scrollbar {
+    height: 8px;
+    opacity: 0;
+}
+
+.cardContainer::-webkit-scrollbar-thumb {
+    transition: background-color 1s ease;
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+.cardContainer:hover::-webkit-scrollbar-thumb {
+    background-color: #606060;
+}
+
+.cardContainer::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa;
+}
+
+/* MAIN CONTENT SCROLL */
+.mainContent{
+
+}
+.mainContent::-webkit-scrollbar {
+    width: 8px;
+    opacity: 0;
+}
+
+.mainContent::-webkit-scrollbar-thumb {
+    transition: background-color 1s ease;
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+.mainContent::-webkit-scrollbar-thumb {
+    background-color: #606060;
+}
+
+.mainContent::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa;
+}
+
+
+.backGround, .pic{
+    border-radius: 3px;
+}
